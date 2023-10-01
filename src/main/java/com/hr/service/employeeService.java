@@ -15,4 +15,15 @@ public class employeeService {
 		return repo.findById(id).orElseThrow();
 	}
 
+	public Employee insert(Employee e) {
+		return repo.save(e);
+	}
+
+	public Employee update(Employee e) {
+		Employee current = repo.findById(e.getId()).get();
+		current.setName(e.getName());
+		current.setSalary(e.getSalary());
+		current.setDep(e.getDep());
+		return repo.save(current);
+	}
 }

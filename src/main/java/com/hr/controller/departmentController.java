@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hr.entity.Employee;
-import com.hr.service.employeeService;
+import com.hr.department.Department;
+import com.hr.service.departmentService;
 
 @RestController
-@RequestMapping("/employee")
-public class employeeController {
+@RequestMapping("/department")
+public class departmentController {
 
 	@Autowired
-	private employeeService service;
+	private departmentService service;
 
 	@GetMapping("/{id}")
-	public Employee findById(@PathVariable Long id) {
+	public Department findById(@PathVariable Long id) {
 		return service.findById(id);
 	}
 
 	@PostMapping("/")
-	public Employee insert(@RequestBody Employee e) {
-		return service.insert(e);
+	public Department insert(@RequestBody Department d) {
+		return service.insert(d);
 	}
 
 	@PutMapping("/")
-	public Employee update(@RequestBody Employee e) {
-		return service.update(e);
+	public Department update(@RequestBody Department d) {
+		return service.update(d);
 	}
 
 }

@@ -1,14 +1,30 @@
 package com.hr.entity;
 
+import com.hr.department.Department;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Table(name = "employee")
 @Entity
-
 public class Employee {
+	String name;
+	@ManyToOne
+//	@JoinColumn(name = "id")
+	Department dep;
+
+	public Department getDep() {
+		return dep;
+	}
+
+	public void setDep(Department dep) {
+		this.dep = dep;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +56,4 @@ public class Employee {
 		this.name = name;
 	}
 
-	String name;
 }
