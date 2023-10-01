@@ -1,4 +1,4 @@
-package com.hr.department;
+package com.hr.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -3,7 +3,7 @@ package com.hr.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hr.department.Department;
+import com.hr.entity.Department;
 import com.hr.repository.departmentRepo;
 
 @Service

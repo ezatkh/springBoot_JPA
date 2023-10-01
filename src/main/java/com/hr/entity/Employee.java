@@ -1,12 +1,11 @@
 package com.hr.entity;
 
-import com.hr.department.Department;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -15,7 +14,7 @@ import jakarta.persistence.Table;
 public class Employee {
 	String name;
 	@ManyToOne
-//	@JoinColumn(name = "id")
+	@JoinColumn(name = "dep_id", referencedColumnName = "id")
 	Department dep;
 
 	public Department getDep() {

@@ -1,5 +1,7 @@
 package com.hr.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +34,11 @@ public class employeeController {
 	@PutMapping("/")
 	public Employee update(@RequestBody Employee e) {
 		return service.update(e);
+	}
+
+	@GetMapping("/department/{depId}")
+	public List<Employee> findByDep_Id(@PathVariable Long depId) {
+		return service.findByDep_Id(depId);
 	}
 
 }

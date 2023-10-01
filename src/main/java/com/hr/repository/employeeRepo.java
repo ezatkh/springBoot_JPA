@@ -15,4 +15,9 @@ public interface employeeRepo extends JpaRepository<Employee, Long> {
 //JPQL
 	@Query(value = "select emp from Employee emp where emp.name like :name")
 	List<Employee> filter(@Param("name") String name);
+
+	// query (select emp from employee emp join emp.department dep where
+	// dep.id=:depId)
+	public List<Employee> findByDep_Id(Long depId);
+
 }

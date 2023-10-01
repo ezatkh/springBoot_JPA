@@ -1,5 +1,7 @@
 package com.hr.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +27,9 @@ public class employeeService {
 		current.setSalary(e.getSalary());
 		current.setDep(e.getDep());
 		return repo.save(current);
+	}
+
+	public List<Employee> findByDep_Id(long depId) {
+		return repo.findByDep_Id(depId);
 	}
 }
