@@ -1,5 +1,7 @@
 package com.hr.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ public class Employee {
 	String name;
 	@ManyToOne
 	@JoinColumn(name = "dep_id", referencedColumnName = "id")
+	@JsonIgnore
 	Department dep;
 
 	public Department getDep() {

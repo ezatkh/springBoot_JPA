@@ -23,6 +23,7 @@ public class employeeService {
 
 	public Employee update(Employee e) {
 		Employee current = repo.findById(e.getId()).get();
+		System.out.print(current);
 		current.setName(e.getName());
 		current.setSalary(e.getSalary());
 		current.setDep(e.getDep());

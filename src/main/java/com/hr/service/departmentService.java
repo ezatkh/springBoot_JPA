@@ -1,5 +1,7 @@
 package com.hr.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class departmentService {
 		Department current = repo.findById(d.getId()).get();
 		current.setName(d.getName());
 		return repo.save(current);
+	}
+
+	public List<Department> findAll() {
+		return repo.findAll();
 	}
 
 }
