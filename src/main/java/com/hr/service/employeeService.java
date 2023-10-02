@@ -12,18 +12,22 @@ import com.hr.repository.employeeRepo;
 public class employeeService {
 	@Autowired
 	private employeeRepo repo;
+	@Autowired
+	private departmentService depService;
 
 	public Employee findById(Long id) {
 		return repo.findById(id).orElseThrow();
 	}
 
 	public Employee insert(Employee e) {
+		if (e.getDep() != null && e.getDep().getId() != null) {
+			e.setDep(depService.findById(e.getDep().getId()));
+		}
 		return repo.save(e);
 	}
 
 	public Employee update(Employee e) {
 		Employee current = repo.findById(e.getId()).get();
-		System.out.print(current);
 		current.setName(e.getName());
 		current.setSalary(e.getSalary());
 		current.setDep(e.getDep());

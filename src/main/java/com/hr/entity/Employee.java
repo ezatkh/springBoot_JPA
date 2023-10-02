@@ -2,6 +2,7 @@ package com.hr.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,12 +17,12 @@ import jakarta.persistence.Table;
 @Entity
 public class Employee {
 	String name;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "dep_id", referencedColumnName = "id")
 	@JsonIgnore
 	Department dep;
 
-	@OneToOne()
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user;
 

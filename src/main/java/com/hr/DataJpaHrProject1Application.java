@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DataJpaHrProject1Application {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(DataJpaHrProject1Application.class, args);
 	}
 
