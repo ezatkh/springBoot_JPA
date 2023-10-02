@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Table(name = "employee")
@@ -19,6 +20,18 @@ public class Employee {
 	@JoinColumn(name = "dep_id", referencedColumnName = "id")
 	@JsonIgnore
 	Department dep;
+
+	@OneToOne()
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Department getDep() {
 		return dep;
