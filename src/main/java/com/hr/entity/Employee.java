@@ -1,7 +1,5 @@
 package com.hr.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,16 +8,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Table(name = "employee")
 @Entity
+@NamedQuery(name = "Employee.findBySalary", query = "select count(emp) from Employee emp where emp.salary>= :salary")
 public class Employee {
 	String name;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "dep_id", referencedColumnName = "id")
-	@JsonIgnore
+	// @JsonIgnore
 	Department dep;
 
 	@OneToOne(cascade = CascadeType.ALL)

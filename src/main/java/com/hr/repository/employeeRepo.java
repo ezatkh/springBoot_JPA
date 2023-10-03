@@ -20,4 +20,11 @@ public interface employeeRepo extends JpaRepository<Employee, Long> {
 	// dep.id=:depId)
 	public List<Employee> findByDep_Id(Long depId);
 
+	public List<Employee> findByNameContaining(String empName);
+
+	public double findBySalary(double salary);
+
+	// public Long countByNameContainingAndDepartmentNameContaining(String empName,
+	// String depName);
+
 }

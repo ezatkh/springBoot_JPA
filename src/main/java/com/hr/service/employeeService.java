@@ -37,4 +37,16 @@ public class employeeService {
 	public List<Employee> findByDep_Id(long depId) {
 		return repo.findByDep_Id(depId);
 	}
+
+	public List<Employee> findByNameContaining(String empName) {
+		return repo.findByNameContaining(empName);
+	}
+
+	public double findBySalary(double salary) {
+		return repo.findBySalary(salary);
+	}
+
+//	public Long countByNameContainingAndDepartmentNameContaining(String empName, String depName) {
+//		return repo.countByNameContainingAndDepartmentNameContaining(empName, depName);
+//	}
 }
