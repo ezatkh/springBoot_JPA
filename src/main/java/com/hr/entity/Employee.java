@@ -3,18 +3,29 @@ package com.hr.entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityResult;
+import jakarta.persistence.FieldResult;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SqlResultSetMapping;
 import jakarta.persistence.Table;
 
 @Table(name = "employee")
 @Entity
-@NamedQuery(name = "Employee.findBySalary", query = "select count(emp) from Employee emp where emp.salary>= :salary")
+@SqlResultSetMapping(name = "EmployeeMapping", entities = @EntityResult(entityClass = Employee.class, fields = {
+		@FieldResult(name = "id", column = "id"), @FieldResult(name = "user.id", column = "user_id"),
+		@FieldResult(name = "dep.id", column = "deb_id"), @FieldResult(name = "name", column = "name"),
+		@FieldResult(name = "salary", column = "salary"), }))
+@NamedNativeQuery(name = "Employee.findBySalary", query = "select empQuery.name,empQuery.salary from Employee empQuery where empQuery.salary>= :salary", resultSetMapping = "EmployeeMapping")
+
+@NamedQuery(name = "Employee.countBySalary", query = "select count(emp) from Employee emp where emp.salary>= :salary")
+
 public class Employee {
 	String name;
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -25,6 +36,13 @@ public class Employee {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	long id;
+	@Column(name = "Salary")
+	double salary;
 
 	public User getUser() {
 		return user;
@@ -41,12 +59,6 @@ public class Employee {
 	public void setDep(Department dep) {
 		this.dep = dep;
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long id;
-	@Column(name = "Salary")
-	double salary;
 
 	public long getId() {
 		return id;

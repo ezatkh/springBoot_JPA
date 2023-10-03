@@ -42,7 +42,11 @@ public class employeeService {
 		return repo.findByNameContaining(empName);
 	}
 
-	public double findBySalary(double salary) {
+	public double countBySalary(double salary) {
+		return repo.countBySalary(salary);
+	}
+
+	public List<Employee> findBySalary(double salary) {
 		return repo.findBySalary(salary);
 	}
 

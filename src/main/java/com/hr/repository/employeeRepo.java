@@ -22,7 +22,9 @@ public interface employeeRepo extends JpaRepository<Employee, Long> {
 
 	public List<Employee> findByNameContaining(String empName);
 
-	public double findBySalary(double salary);
+	public double countBySalary(double salary);
+
+	public List<Employee> findBySalary(double salary);
 
 	// public Long countByNameContainingAndDepartmentNameContaining(String empName,
 	// String depName);

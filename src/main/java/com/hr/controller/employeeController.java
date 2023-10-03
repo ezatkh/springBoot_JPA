@@ -47,8 +47,13 @@ public class employeeController {
 		return service.findByNameContaining(empName);
 	}
 
-	@GetMapping("/salary/{salary}")
-	public double findBySalary(@PathVariable double salary) {
+	@GetMapping("/salary/count/{salary}")
+	public double countBySalary(@PathVariable double salary) {
+		return service.countBySalary(salary);
+	}
+
+	@GetMapping("/salary/employees/{salary}")
+	public List<Employee> findBySalary(@PathVariable double salary) {
 		return service.findBySalary(salary);
 	}
 
